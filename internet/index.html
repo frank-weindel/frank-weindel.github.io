@@ -1,0 +1,28 @@
+<html>
+<head></head>
+<body>
+<script src="offline.min.js"></script>
+<script src="buzz.js"></script>
+<script>
+
+  Offline.options = {checks: {xhr: {url: 'http://api.pulse.test.onetwosee.xyz/'}}};
+
+  var mySound = new buzz.sound( "dance1", {
+    formats: [ "mp3" ]
+  });
+
+  Offline.on('down', function() {
+    console.log("DOWN");
+    mySound.play()
+      .fadeIn()
+      .loop();
+  });
+
+  Offline.on('up', function() {
+    mySound.stop();
+  });
+
+  setTimeout(Offline.check, 1000);
+</script>
+</body>
+</html>
