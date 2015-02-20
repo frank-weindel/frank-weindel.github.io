@@ -1,28 +1,81 @@
 <html>
-<head></head>
+<head>
+  <style>
+    body {
+      background-color: black;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    body .text {
+      display: none;
+    }
+
+    body.offline1 {
+      background-color: red;
+      color: blue;
+    }
+
+    body.offline2 {
+      background-color: blue;
+      color: red;
+    }
+
+    body.offline1 .text, body.offline2 .text {
+      display: block;
+      font-size: 50px;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%,-50%); /* IE 9 */
+      -webkit-transform: translate(-50%,-50%); /* Chrome, Safari, Opera */
+      transform: translate(-50%,-50%);
+    }
+  </style>
+</head>
 <body>
+  <div class="text">INTERNET PROBLEMZ</div>
 <script src="offline.min.js"></script>
 <script src="buzz.js"></script>
 <script>
 
-  Offline.options = {checks: {xhr: {url: 'http://api.pulse.test.onetwosee.xyz/'}}};
+  Offline.options = {reconnect: false, requests: false};
 
   var mySound = new buzz.sound( "dance1", {
-    formats: [ "mp3" ]
+    formats: [ "mp3" ],
+    preload: true
   });
 
+  var body = document.body;
+
+  var flashIt = function() {
+    if (body.className === 'offline1')
+      body.className = "offline2";
+    else
+      body.className = "offline1";
+  }
+  var flashInterval;
+
   Offline.on('down', function() {
-    console.log("DOWN");
+    console.log(new Date(), " down");
     mySound.play()
       .fadeIn()
       .loop();
+    flashInterval = setInterval(flashIt, 1000);
   });
 
   Offline.on('up', function() {
+    console.log(new Date(), " up");
     mySound.stop();
+    clearInterval(flashInterval);
+    body.className = '';
+    mySound.load();
   });
 
-  setTimeout(Offline.check, 1000);
+  setInterval(function() {
+    Offline.check();
+  , 1000);
 </script>
 </body>
 </html>
