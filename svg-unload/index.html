@@ -19,7 +19,7 @@
 
       function doReattach() {
         $('body').prepend($svgContainer);
-        $('#message').text('SVG reattached. Notice changes are gone.');
+        $('#message').text('SVG container reattached. Notice changes are gone.');
       }
 
       function doDetach() {
@@ -27,7 +27,7 @@
 
         var countDown = 5;
         var countDownCb = function() {
-          $('#message').text('SVG detached. No "unload" event fired. How to detect if SVG object is unloaded? Reattaching node in ' + countDown + ' seconds');
+          $('#message').text('SVG container detached. No "unload" event fired for SVG object. How to detect if SVG object is unloaded? Reattaching node in ' + countDown + ' seconds');
           if (countDown > 0) {
             countDown--;
             setTimeout(countDownCb, 1000);
@@ -47,7 +47,7 @@
 
         var countDownCb = function() {
 
-          $('#message').text('SVG modified. Detaching SVG node in ' + countDown + ' seconds');
+          $('#message').text('SVG modified. Detaching SVG container in ' + countDown + ' seconds');
           if (countDown > 0) {
             countDown--;
             setTimeout(countDownCb, 1000);
