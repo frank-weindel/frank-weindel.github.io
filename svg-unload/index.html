@@ -64,7 +64,7 @@
       function onLoad(e) {
         var countDown = 3;
         svgDocument = e.currentTarget.contentDocument;
-        svgDocument.defaultView.addEventListener('unload' , function(){console.log('!!SVG UNLOADED!!')});
+        svgDocument.defaultView.addEventListener('unload' , function(){console.log('!!UNLOAD EVENT FROM OUTSIDE SVG!!')});
         console.log('SVG loaded.');
 
         var countDownCb = function() {
