@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+   viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000; width: 100%; height: 100%;" xml:space="preserve" onunload="javascript:console.log('wwwwww')">
+  <style>
+      .diamond-base, .diamond-outline {
+        fill:none;
+        stroke:#686868;
+        stroke-width:29;
+        stroke-miterlimit:10;
+      }
+
+      .diamond-base-on {
+        fill: white !important;
+      }
+
+      .diamond-text {
+        font-size:95px;
+        fill: currentColor;
+      }
+
+  </style>
+  <g>
+    <g>
+      <g>
+        <polygon id="diamond-base-1" class="diamond-base" points="1576,761.7 1731.5,827.5 1641.9,900.8 1482.9,827.5"/>
+        <text id="diamond-base-1-text" class="diamond-text" x="1450" y="800" text-anchor="end">Player 1</text>
+      </g>
+    </g>
+  </g>
+  <g>
+    <g>
+      <g>
+        <polygon id="diamond-base-2" class="diamond-base" points="994.1,513.3 1092.5,554.9 994.1,600.3 895.7,554.9"/>
+        <text id="diamond-base-2-text" class="diamond-text" x="1100" y="500" text-anchor="start">Player 2</text>
+      </g>
+    </g>
+  </g>
+  <g>
+    <g>
+      <polygon id="diamond-base-3" class="diamond-base" points="414.1,761.7 258.6,827.5 348.2,900.8 507.2,827.5"/>
+      <text id="diamond-base-3-text" class="diamond-text" x="500" y="950" text-anchor="start">Player 3</text>
+    </g>
+  </g>
+  <polygon class="diamond-outline" points="1731.8,827.2 994.2,1429.1 257.8,827.2 994.2,512.3 "/>
+  <polygon id="diamond-base-h" class="diamond-base" points="1107.3,1336.7 993.9,1429.1 881,1336.7 993.9,1288.4 "/>
+
+
+</svg>
