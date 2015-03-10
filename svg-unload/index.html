@@ -10,7 +10,7 @@
       SVG is loading...
     </div>
     <div>
-      <a href="http://stackoverflow.com/questions/28953030/add-listener-to-svg-unload-event-when-svg-is-loaded-within-an-object-tag">Stack Overflow question</a>
+      <a href="http://stackoverflow.com/questions/28953030/add-listener-to-svg-unload-event-when-svg-is-loaded-within-an-object-tag">Stack Overflow question</a> <b>Answered.</b> Thanks Kaiido!
     </div>
     <script>
 
@@ -29,7 +29,7 @@
 
         var countDown = 5;
         var countDownCb = function() {
-          $('#message').text('SVG container detached. No "unload" event fired for SVG object. How to detect if SVG object is unloaded? Reattaching node in ' + countDown + ' seconds');
+          $('#message').text('SVG container detached. Reattaching node in ' + countDown + ' seconds');
           if (countDown > 0) {
             countDown--;
             setTimeout(countDownCb, 1000);
