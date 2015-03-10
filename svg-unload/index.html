@@ -25,10 +25,10 @@
 
       function doDetach() {
         $svgContainer.detach();
+        console.log('SVG container detached.');
 
         var countDown = 5;
         var countDownCb = function() {
-          console.log('SVG container detached.');
           $('#message').text('SVG container detached. No "unload" event fired for SVG object. How to detect if SVG object is unloaded? Reattaching node in ' + countDown + ' seconds');
           if (countDown > 0) {
             countDown--;
@@ -46,9 +46,9 @@
         svgDocument.getElementById('diamond-base-1-text').textContent = 'Bob';
         svgDocument.getElementById('diamond-base-2-text').textContent = 'Alice';
         svgDocument.getElementById('diamond-base-3-text').textContent = 'James';
+        console.log('SVG modified.');
 
         var countDownCb = function() {
-          console.log('SVG modified.');
           $('#message').text('SVG modified. Detaching SVG container in ' + countDown + ' seconds');
           if (countDown > 0) {
             countDown--;
@@ -65,9 +65,9 @@
         var countDown = 3;
         svgDocument = e.currentTarget.contentDocument;
         svgDocument.defaultView.addEventListener('unload' , function(){console.log('!!SVG UNLOADED!!')});
+        console.log('SVG loaded.');
 
         var countDownCb = function() {
-          console.log('SVG loaded.');
           $('#message').text('SVG loaded. Modyfing SVG in ' + countDown + ' seconds');
           if (countDown > 0) {
             countDown--;
