@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Composit Font Demo</title>
+  <style>
+    @font-face {
+      font-family: 'Ransom';
+      src: url('Anton-Regular.ttf') format('truetype');
+      unicode-range: U+41-46; /* A-F */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('Caveat-Medium.ttf') format('truetype');
+      unicode-range: U+47-4C; /* G-L */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('DancingScript-Medium.ttf') format('truetype');
+      unicode-range: U+4D-53; /* M-S */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('GloriaHallelujah-Regular.ttf') format('truetype');
+      unicode-range: U+54-59; /* T-Y */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('MajorMonoDisplay-Regular.ttf') format('truetype');
+      unicode-range: U+5A,U+61-64; /* Z, a-d */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('Montserrat-Black.ttf') format('truetype');
+      unicode-range: U+65-6A; /* e-j */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('RobotoSlab-Bold.ttf') format('truetype');
+      unicode-range: U+6B-70; /* k-p */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('SourceCodePro-Black.ttf') format('truetype');
+      unicode-range: U+71-76; /* q-v */
+    }
+
+    @font-face {
+      font-family: 'Ransom';
+      src: url('Ultra-Regular.ttf') format('truetype');
+      unicode-range: U+77-7B; /* w-z */
+    }
+
+    body {
+      font-family: 'Ransom';
+      font-size: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <p style="font-family: sans-serif">Did you know CSS allows for you to form a single font family with multiple fonts faces each defined by their own unicode codepoint ranges?</p>
+  <p>This is all just one font family! Look at the source code! I'm not using any tags between letters.</p>
+
+  <p>the quick brown fox jumps over the lazy dog!</p>
+  <p>THE FIVE BOXING WIZARDS JUMP QUICKLY!</p>
+
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+  <p>abcdefghijklmnopqrstuvwxyz</p>
+
+  <p style="font-family: sans-serif">Canvas2d text drawing even supports this, even though it does not support general rich text rendering.</p>
+  <!-- Canvas and code to render text  -->
+  <canvas style="border: 1px solid black" id="canvas" width="800" height="600"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const text = [
+      'the quick brown fox jumps over the lazy dog!',
+      'THE FIVE BOXING WIZARDS JUMP QUICKLY!',
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      'abcdefghijklmnopqrstuvwxyz',
+    ];
+
+    function render() {
+      // Resize the canvas to fit the text we are about to draw (one line at a time)
+      ctx.font = '40px Ransom';
+      const width = Math.max(...text.map(line => ctx.measureText(line).width));
+      const height = 50 * text.length + 50;
+
+      canvas.width = width;
+      canvas.height = height;
+
+
+      ctx.font = '40px Ransom';
+      // Draw text one line at a time
+      for (let i = 0; i < text.length; i++) {
+        ctx.fillText(text[i], 10, 50 + i * 50);
+      }
+    }
+
+    // When all fonts have loaded, render the text
+    document.fonts.ready.then(render);
+
+  </script>
+
+  <p style="font-family: sans-serif">Why would you ever do this? Other than just having fun, this is useful for crafting a font-family that, for instance, uses "Times New Roman" for Latin characters, and a "Noto Serif Japanese" for Japanese characters.</p>
+
+  <p style="font-family: sans-serif">Reference: <a href="https://www.w3.org/TR/2018/REC-css-fonts-3-20180920/#composite-fonts">CSS Fonts Module Level 3</a></p>
+</body>
+
+</html>
